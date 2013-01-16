@@ -1,1 +1,1 @@
-var express;express=require("express"),console.log("Hey ho, let's go!");
+var express;express=require("express");console.log("Hey ho");

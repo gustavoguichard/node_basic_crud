@@ -1,2 +1,2 @@
 express = require 'express'
-console.log "Hey ho, let's go!"
+console.log "Hey ho"

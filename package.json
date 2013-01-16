@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app"
+    "start": "nodemon app.js"
   },
   "dependencies": {
     "express": "3.0.6",
+    "express-resource": "~1",
     "jade": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "nodemon": "*"
   },
   "author": "Gustavo Guichard"
 }

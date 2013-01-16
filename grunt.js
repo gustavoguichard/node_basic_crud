@@ -2,7 +2,10 @@
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-clean');
   grunt.loadNpmTasks('grunt-coffee');
+  grunt.loadNpmTasks('grunt-compass');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-reload');
   grunt.loadNpmTasks('grunt-smushit');
   grunt.loadNpmTasks('grunt-yui-compressor');
   // Project configuration.
@@ -19,18 +22,16 @@ module.exports = function(grunt) {
       folder: "public/css/"
     },
     coffee: {
-      scripts: {
-        src: ['src/scripts/*.coffee']
-      },
-      app: {
-        src: ['app.coffee']
+      modules: {
+        src: ['*.coffee', 'config/*.coffee', 'src/scripts/*.coffee', 'controllers/*.coffee', 'controllers/*.coffee']
       }
     },
-    copy: {
-      target: {
-        files: {
-          'src/styles/': 'public/css/*'
-        }
+    compass: {
+      dev: {
+        src: 'src/styles/',
+        dest: 'src/styles/',
+        outputstyle: 'expanded',
+        linecomments: true
       }
     },
     cssmin: {
@@ -54,6 +55,12 @@ module.exports = function(grunt) {
         dest: 'public/js/script.js'
       }
     },
+    reload: {
+      port: 3000,
+      proxy: {
+        host: 'localhost'
+      }
+    },
     smushit:{
       //replace recursive
       imgs: {
@@ -61,12 +68,21 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['app.coffee', 'src/scripts/*.coffee', 'src/styles/*.sass'],
-      tasks: 'coffee min'
+      process: {
+        files: ['*.coffee', 'config/*.coffee', 'controllers/*.coffee', 'src/scripts/*.coffee', 'src/styles/*.sass'],
+        tasks: 'compass coffee min cssmin'
+      }//,
+      // reload: {
+      //   files: ['public/css/style.css'],
+      //   tasks: 'reload',
+      //   options: {
+      //     debounceDelay: 250
+      //   }
+      // }
     }
   });
 
   // Default task.
-  grunt.registerTask('pub', 'copy clean cssmin smushit');
+  grunt.registerTask('pub', 'clean cssmin smushit');
 
 };

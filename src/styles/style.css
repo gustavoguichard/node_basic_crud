@@ -1,0 +1,11 @@
+/* line 1, style.sass */
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+/* line 5, style.sass */
+a {
+  color: #00b7ff;
+  font-weight: bold;
+}
