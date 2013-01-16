@@ -16,14 +16,21 @@ app.configure ->
   app.use express.logger('dev')
   app.use express.bodyParser()
   app.use express.methodOverride()
+
   app.use app.router
   app.use express.static __dirname + '/public'
 
   # 404 errors
   app.use (req, res)->
-    res.send 404, "four - oh - four"
+    res.redirect '/users', nada
   app.use (err, req, res, next)->
     res.status(err.status || 404).send err.message
+
+app.configure 'development', ->
+  app.use express.errorHandler dumpExceptions: true, showStack: true
+
+app.configure 'production', ->
+    app.use express.errorHandler()
 
 mongoose.connect "mongodb://localhost/helloExpress"
 
@@ -81,8 +88,8 @@ app.delete '/users/:name', (req, res)->
   Users.remove {name: req.params.name}, (err)->
     res.redirect '/users'
 
-app.configure 'development', ->
-  app.use express.errorHandler()
-
-http.createServer(app).listen app.get('port'), ->
+unless module.parent
+  http.createServer(app).listen app.get('port')
   console.log "Express server listening on port #{app.get 'port'}"
+
+module.exports = app

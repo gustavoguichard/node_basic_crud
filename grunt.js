@@ -3,7 +3,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-clean');
   grunt.loadNpmTasks('grunt-coffee');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-smushit');
   grunt.loadNpmTasks('grunt-yui-compressor');
   // Project configuration.
@@ -53,13 +52,6 @@ module.exports = function(grunt) {
       dist: {
         src: ['src/scripts/*.js'],
         dest: 'public/js/script.js'
-      }
-    },
-    sass: {
-      dist: {
-        files: {
-          'src/styles/style.css': 'src/styles/style.scss'
-        }
       }
     },
     smushit:{

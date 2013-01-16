@@ -19,11 +19,22 @@ app.configure(function() {
   app.use(app.router);
   app.use(express["static"](__dirname + '/public'));
   app.use(function(req, res) {
-    return res.send(404, "four - oh - four");
+    return res.redirect('/users', nada);
   });
   return app.use(function(err, req, res, next) {
     return res.status(err.status || 404).send(err.message);
   });
+});
+
+app.configure('development', function() {
+  return app.use(express.errorHandler({
+    dumpExceptions: true,
+    showStack: true
+  }));
+});
+
+app.configure('production', function() {
+  return app.use(express.errorHandler());
 });
 
 mongoose.connect("mongodb://localhost/helloExpress");
@@ -107,10 +118,9 @@ app["delete"]('/users/:name', function(req, res) {
   });
 });
 
-app.configure('development', function() {
-  return app.use(express.errorHandler());
-});
+if (!module.parent) {
+  http.createServer(app).listen(app.get('port'));
+  console.log("Express server listening on port " + (app.get('port')));
+}
 
-http.createServer(app).listen(app.get('port'), function() {
-  return console.log("Express server listening on port " + (app.get('port')));
-});
+module.exports = app;
