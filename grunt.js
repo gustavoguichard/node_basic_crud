@@ -19,39 +19,33 @@ module.exports = function(grunt) {
         ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
     },
     clean: {
-      folder: "public/css/"
+      folder: ["public/css/", "public/img"]
     },
     coffee: {
       modules: {
-        src: ['*.coffee', 'config/*.coffee', 'src/scripts/*.coffee', 'controllers/*.coffee', 'controllers/*.coffee']
+        src: ['*.coffee', 'config/**/*.coffee', 'app/**/*.coffee']
       }
     },
     compass: {
       dev: {
-        src: 'src/styles/',
-        dest: 'src/styles/',
+        src: 'app/assets/styles/',
+        dest: 'app/assets/styles/',
         outputstyle: 'expanded',
         linecomments: true
       }
     },
     cssmin: {
       dist: {
-        src: ['src/styles/*.css'],
+        src: ['app/assets/styles/*.css'],
         dest: 'public/css/style.css'
       }
     },
     lint: {
       files: ['grunt.js', 'app.coffee', 'src/scripts/*.coffee']
     },
-    // concat: {
-    //   dist: {
-    //     src: ['<banner:meta.banner>', '<file_strip_banner:src/<%= pkg.name %>.js>'],
-    //     dest: 'dist/<%= pkg.name %>.js'
-    //   }
-    // },
     min: {
       dist: {
-        src: ['src/scripts/*.js'],
+        src: ['app/assets/scripts/*.js'],
         dest: 'public/js/script.js'
       }
     },
@@ -62,14 +56,14 @@ module.exports = function(grunt) {
       }
     },
     smushit:{
-      //replace recursive
       imgs: {
-          src:'public/img'
+          src: 'app/assets/images',
+          dest: 'public/img'
       }
     },
     watch: {
       process: {
-        files: ['*.coffee', 'config/*.coffee', 'controllers/*.coffee', 'src/scripts/*.coffee', 'src/styles/*.sass'],
+        files: ['*.coffee', 'config/**/*.coffee', 'app/**/*.coffee', 'app/assets/styles/**/*.sass'],
         tasks: 'compass coffee min cssmin'
       }//,
       // reload: {

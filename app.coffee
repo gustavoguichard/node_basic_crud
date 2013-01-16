@@ -4,7 +4,7 @@ http = require 'http'
 routes = require './config/routes'
 
 # Controllers
-usersController = require './controllers/user'
+usersController = require './app/controllers/user'
 
 app = express()
 
