@@ -31,7 +31,11 @@ module.exports = function(grunt) {
         src: 'app/assets/styles/',
         dest: 'app/assets/styles/',
         outputstyle: 'expanded',
-        linecomments: true
+        linecomments: true,
+        // require: [
+        //   'semantic-mixins'
+        // ],
+        images: '/public/img'
       }
     },
     cssmin: {

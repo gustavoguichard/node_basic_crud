@@ -1,10 +1,16 @@
-/* line 1, style.sass */
+/* line 4, semantic-mixins/_main.sass */
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 3, style.sass */
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-/* line 5, style.sass */
+/* line 7, style.sass */
 a {
   color: #00b7ff;
   font-weight: bold;
