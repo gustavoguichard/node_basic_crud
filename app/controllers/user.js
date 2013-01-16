@@ -1,16 +1,6 @@
-var UserSchema, Users, mongoose;
+var Users;
 
-mongoose = require('mongoose');
-
-mongoose.connect("mongodb://localhost/helloExpress");
-
-UserSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  age: Number
-});
-
-Users = mongoose.model('Users', UserSchema);
+Users = require('../models/user');
 
 exports.index = function(req, res) {
   return Users.find({}, function(err, docs) {

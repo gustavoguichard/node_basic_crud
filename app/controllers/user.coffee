@@ -1,12 +1,4 @@
-mongoose = require 'mongoose'
-
-mongoose.connect "mongodb://localhost/helloExpress"
-
-UserSchema = new mongoose.Schema 
-  name: String
-  email: String
-  age: Number
-Users = mongoose.model 'Users', UserSchema
+Users = require '../models/user'
 
 exports.index = (req, res)->
   Users.find {}, (err, docs)->

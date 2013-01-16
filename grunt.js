@@ -23,7 +23,7 @@ module.exports = function(grunt) {
     },
     coffee: {
       modules: {
-        src: ['*.coffee', 'config/**/*.coffee', 'app/**/*.coffee']
+        src: ['**/*.coffee']
       }
     },
     compass: {
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
     },
     watch: {
       process: {
-        files: ['*.coffee', 'config/**/*.coffee', 'app/**/*.coffee', 'app/assets/styles/**/*.sass'],
+        files: ['**/*.coffee', 'app/assets/styles/**/*.sass'],
         tasks: 'compass coffee min cssmin'
       }//,
       // reload: {
