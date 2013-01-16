@@ -17,7 +17,7 @@ app.configure(function() {
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.set('views', __dirname + '/views');
+  app.set('views', __dirname + '/app/views');
   app.use(app.router);
   app.use(express["static"](__dirname + '/public'));
   app.use(function(req, res) {
