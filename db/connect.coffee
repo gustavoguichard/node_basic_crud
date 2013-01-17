@@ -1,6 +1,4 @@
 mongoose = require 'mongoose'
-mongoose.connect process.env.MONGOLAB_URI || 
-  process.env.MONGOHQ_URL || 
-  'mongodb://localhost/helloExpress'
+mongoose.connect process.env.MONGOLAB_URI || 'mongodb://localhost/helloExpress'
 
 module.exports = mongoose
