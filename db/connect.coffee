@@ -1,6 +1,6 @@
 mongoose = require 'mongoose'
 
-uristring = process.env.MONGODB_URI || process.env.MONGOLAB_URI || 'mongodb://localhost/helloExpress'
+uristring = process.env.MONGOLAB_URI || 'mongodb://localhost/helloExpress'
 
 # Ensure safe writes
 mongoOptions = { db: { safe: true }}
@@ -11,5 +11,4 @@ mongoose.connect uristring, mongoOptions, (err, res)->
     console.log "ERROR connecting to: #{uristring}. #{err}"
   else
     console.log "Succeeded connected to: #{uristring}"
-
-module.exports = mongoose
+    module.exports = mongoose
