@@ -1,6 +1,8 @@
 mongoose = require 'mongoose'
+EventEmitter = require('events').EventEmitter
+logger = new EventEmitter()
 
-uristring = process.env.MONGOLAB_URI || 'mongodb://localhost/helloExpress'
+uristring = process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/helloExpress'
 
 # Ensure safe writes
 mongoOptions = { db: { safe: true }}
@@ -9,6 +11,5 @@ mongoOptions = { db: { safe: true }}
 mongoose.connect uristring, mongoOptions, (err, res)->
   if err
     console.log "ERROR connecting to: #{uristring}. #{err}"
-  else
-    console.log "Succeeded connected to: #{uristring}"
-    module.exports = mongoose
+
+module.exports = mongoose
