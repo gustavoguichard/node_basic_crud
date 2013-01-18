@@ -34,8 +34,7 @@ app.configure 'production', ->
 
 routes.user app, usersController
 
-unless module.parent
-  http.createServer(app).listen app.get('port')
-  console.log "Express server listening on port #{app.get 'port'}"
+http.createServer(app).listen app.get('port')
+console.log "Express server listening on port #{app.get 'port'}"
 
 module.exports = app

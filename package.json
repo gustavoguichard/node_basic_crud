@@ -8,9 +8,17 @@
   "dependencies": {
     "express": "3.0.6",
     "express-resource": "~1",
-    "jade": "*",
-    "mongoose": "*",
-    "nodemon": "*"
+    "jade": "latest",
+    "mongoose": "latest",
+    "nodemon": "latest",
+    "coffee-script": "latest",
+    "grunt-clean": "latest",
+    "grunt-coffee": "latest",
+    "grunt-compass": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-smushit": "latest",
+    "grunt-yui-compressor": "latest"
   },
   "engines": {
     "node": "0.8.x",
