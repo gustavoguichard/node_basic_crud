@@ -1,10 +1,10 @@
-mongoose = require '../../db/connect'
+mongoose = require 'mongoose'
 
 UserSchema = new mongoose.Schema 
-  name: String
+  name: 
+    type: String
+    default: ""
   email: String
   age: Number
 
-Users = mongoose.model 'Users', UserSchema
-
-module.exports = Users
+mongoose.model 'User', UserSchema

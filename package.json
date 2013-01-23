@@ -18,7 +18,8 @@
     "grunt-contrib-copy": "latest",
     "grunt-contrib-watch": "latest",
     "grunt-smushit": "latest",
-    "grunt-yui-compressor": "latest"
+    "grunt-yui-compressor": "latest",
+    "node-compass": "latest"
   },
   "engines": {
     "node": "0.8.x",

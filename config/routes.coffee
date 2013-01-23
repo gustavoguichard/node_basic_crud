@@ -1,13 +1,12 @@
-user = (app, user)->
+module.exports = (app)->
+  users = require '../app/controllers/users_controller'
   app.param 'name', (req, res, next, name)->
-    user.load(req, next, name)
+    users.load(req, next, name)
 
-  app.get('/users', user.index)          
-  app.get('/users/new', user.new)
-  app.post('/users', user.create)
-  app.get('/users/:name', user.show)
-  app.get('/users/:name/edit', user.edit)
-  app.put('/users/:name', user.update)
-  app.delete('/users/:name', user.destroy)
-
-module.exports.user = user
+  app.get('/users', users.index)          
+  app.get('/users/new', users.new)
+  app.post('/users', users.create)
+  app.get('/users/:name', users.show)
+  app.get('/users/:name/edit', users.edit)
+  app.put('/users/:name', users.update)
+  app.delete('/users/:name', users.destroy)

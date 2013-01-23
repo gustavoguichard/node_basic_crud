@@ -1,4 +1,5 @@
-Users = require '../models/user'
+mongoose = require 'mongoose'
+Users = mongoose.model 'User'
 
 exports.index = (req, res)->
   Users.find {}, (err, docs)->
